@@ -1,26 +1,6 @@
-import re
-import os
-import time
-from pickle import TRUE
-
 with open('input', 'r') as file:
     lines = [line.strip() for line in file if line.strip()]
-    words = [line.split() for line in lines]
-    board = [list(line.strip()) for line in lines]
-    board_flat = sum(board, [])
-numbers = []
-try:
-    with open('input', 'r') as file:
-        numbers = [int(n) for n in file.read().replace(',', ' ').split()]
-except:
-    pass
             
-print(f"lines: {lines}")
-print(f"words: {words}")
-print(f"board: {board}")
-print(f"board_flat: {board_flat}")
-print(f"numbers: {numbers}")
-
 ranges = {}
 part = 1
 error_rate = 0
@@ -40,7 +20,7 @@ for line in lines:
         p1 = vals[0].split('-')
         p2 = vals[1].split('-')
         ranges[tag] = [int(p1[0]), int(p1[1]), int(p2[0]), int(p2[1])]
-        print(f"tag={tag}, ranges[tag]={ranges[tag]}")
+        #print(f"tag={tag}, ranges[tag]={ranges[tag]}")
         continue
     if part == 3:
         numbers = [int(n) for n in line.replace(',', ' ').split()]        
@@ -52,9 +32,4 @@ for line in lines:
                     break
             if not found:
                 error_rate += n
-print(error_rate)                
-                
-        
-    
-    
-    
+print(error_rate)
