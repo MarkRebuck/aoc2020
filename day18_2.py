@@ -10,7 +10,6 @@ def precedence(c):
 
 total = 0
 for line in lines:
-    val = 0
     stack = ['.']
     post = ""
     for c in line:
@@ -24,12 +23,9 @@ for line in lines:
             if stack[-1] != '.':
                 stack.pop()
         else:
-            if precedence(c) > precedence(stack[-1]):
-                stack.append(c)
-            else:
-                while precedence(c) <= precedence(stack[-1]):
-                    post += stack.pop()
-                stack.append(c)
+            while precedence(c) <= precedence(stack[-1]):
+                post += stack.pop()
+            stack.append(c)
 
     while stack[-1] != '.':
         post += stack.pop()
